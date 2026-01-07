@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <body>
+
+<div class="box">
+    <h2>Random Number App</h2>
+    <div id="number">0</div>
+    <p>Click the number<br>
+       Even → Start | Odd → Stop</p>
+</div>
+
+<script>
+    let intervalId = null;
+    let numberDisplay = document.getElementById("number");
+
+    function generateRandomNumber() {
+        numberDisplay.textContent = Math.floor(Math.random() * 100);
+    }
+numberDisplay.addEventListener("click", function () {
+        let currentNumber = parseInt(numberDisplay.textContent);
+
+        if (currentNumber % 2 === 0) {
+            // Even number → Start changing
+            if (intervalId === null) {
+                intervalId = setInterval(generateRandomNumber, 200);
+            }
+        } else {
+            // Odd number → Stop changing
+            clearInterval(intervalId);
+            intervalId = null;
+                    }
+    });
+</script>
+</body>
+ <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+        }
+
+        .box {
+            text-align: center;
+            padding: 30px 40px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        #number {
+             font-size: 60px;
+            margin: 20px 0;
+            cursor: pointer;
+            color: #333;
+        }
+
+        p {
+            font-size: 16px;
+            color: #555;
+        }
+    </style>
+</html>
